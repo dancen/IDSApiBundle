@@ -7,7 +7,7 @@ parameters:
    ids_region_helper.class:   IDS\ApiBundle\Model\Helpers\IdsRegionHelper
    ids_regions_helper.class:  IDS\ApiBundle\Model\Helpers\IdsRegionsHelper
    
-   ids_api.api_key:           2a0c1b80-d9e0-47fe-ab2d-da50b98daa76
+   ids_api.api_key:           ... put your key here ...
 
 services:
    ids_default_helper:
