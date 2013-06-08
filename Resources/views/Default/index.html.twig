@@ -1,0 +1,9 @@
+{% extends 'IDSApiBundle::page.html.twig' %}
+
+{% block content %}
+<div>   
+    <a href='{{ path('ids_api_query',{ q: 'children'}) }}'>Query</a><br>
+    <a href='{{ path('ids_api_themes',{ ids_action: 'themes'}) }}'>Themes</a><br>
+    <a href='{{ path('ids_api_regions',{ ids_action: 'regions'}) }}'>Regions</a><br>
+</div>      
+{% endblock %}

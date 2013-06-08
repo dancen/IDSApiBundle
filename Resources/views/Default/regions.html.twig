@@ -1,0 +1,21 @@
+{% extends 'IDSApiBundle::page.html.twig' %}
+
+{% block content %}
+<div>
+    {% set errors = response.hasErrors() %}
+
+         {% if errors == true %}   
+    
+             {{ include('IDSApiBundle:Default:error.html.twig', {'response': response }) }}  
+    
+    {% else %}    
+    
+           {% set response = response.getObject() %}
+           {% for object in response.results %}
+                <a href='{{ path('ids_api_region',{ 'ids_action': 'region', 'ID': object.object_id })}}' target='_blank'>{{ object.title }}</a><br>
+           {% endfor %}
+                        
+    {% endif %}
+       
+</div>      
+{% endblock %}

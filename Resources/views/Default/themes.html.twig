@@ -1,0 +1,27 @@
+{% extends 'IDSApiBundle::page.html.twig' %}
+
+{% block content %}
+<div>
+            
+    {% set errors = response.hasErrors() %}
+
+         {% if errors == true %}   
+    
+                {{ include('IDSApiBundle:Default:error.html.twig', {'response': response }) }}  
+    
+         {% else %}    
+    
+           {% set response = response.getObject() %}
+           {% for object in response.results %}
+                <b>{{ object.title }}</b><br>
+                {% for array in object.children_object_array %}
+                    {% for child in array %}
+                        &nbsp; - <a href='{{ path('ids_api_theme',{ 'ids_action': 'theme', 'ID': child.object_id })}}' target='_blank'>{{ child.object_name}}</a><br>
+                    {% endfor %}
+                {% endfor %}
+           {% endfor %}
+                        
+    {% endif %}
+       
+</div>      
+{% endblock %}

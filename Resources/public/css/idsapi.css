@@ -1,0 +1,16 @@
+/* 
+    Document   : ids
+    Created on : 4-giu-2013, 20.57.41
+    Author     : dan
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+div {
+    border: 1px dotted #999;
+    padding: 5px;
+}

@@ -1,0 +1,74 @@
+{% if current == null %}
+
+    {% set current = 1 %}
+
+{% endif %}
+
+        <form id='ids_page_form' method='post' action='{{ uri|raw }}'>
+        <input type='hidden' id='ids_pager' name='ids_page' value='{{ current }}'></form>
+        <table width='100%' align='right'><tr>
+        <td>Number of IDS records found: {{ total_results }} </td>       
+       
+        
+        {% if current > 1 %}
+        
+             <td><a href="#" onclick="document.forms['ids_page_form'].ids_page.value='1';document.forms['ids_page_form'].submit();"> first </a></td>
+             <td><a href="#" onclick="document.forms['ids_page_form'].ids_page.value='{{ current - 1 }}';document.forms['ids_page_form'].submit();"> previous </a></td>
+        
+        {% endif %}
+        
+        <td> &nbsp;
+        
+                   
+            {% set rangepages = 4 %}
+       
+            {% if current > rangepages %}  ...  {% endif %}
+        
+            {% if current > rangepages %}
+
+                {% set startingpage = current - rangepages %}
+
+            {% else %}
+                
+                {% set startingpage = 1 %}
+                
+            {% endif %}
+        
+                    {% for i in (current - rangepages) .. (current + rangepages) %}
+
+                        {% if i > 0 and i < lastpage %}
+            
+                          {% if current == i %}
+            
+                              <b>{{ i }}</b> &nbsp;
+            
+                          {% else %}   
+                              
+                               <a href="#" onclick="document.forms['ids_page_form'].ids_page.value='{{ i }}';document.forms['ids_page_form'].submit();">{{ i }}</a> &nbsp;
+                          
+                          {% endif %}
+
+                          {% if i == ( current + rangepages ) %}
+
+                          {% endif %}
+                               
+                        {% endif %}
+
+                    {% endfor %}
+        
+        {% if ( ( current < ( lastpage - rangepages ) ) and ( lastpage > 6 ) ) %} ... {% endif %}        
+                
+        {% if current < (lastpage-1) %}
+        
+            <td><a href="#" onclick="document.forms['ids_page_form'].ids_page.value='{{ current+1 }}';document.forms['ids_page_form'].submit();"> next </a></td>
+            <td><a href="#" onclick="document.forms['ids_page_form'].ids_page.value='{{ lastpage-1 }}';document.forms['ids_page_form'].submit();"> last </a></td>
+            <td>Total pages: {{ lastpage - 1 }}</td>
+            
+         {% endif %}
+        
+        
+        </tr></table><br><br>
+        
+        
+        
+   

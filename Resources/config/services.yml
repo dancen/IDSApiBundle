@@ -1,0 +1,60 @@
+parameters:
+   ids_default_helper.class:  IDS\ApiBundle\Model\Helpers\IdsDefaultHelper
+   ids_all_helper.class:      IDS\ApiBundle\Model\Helpers\IdsAllHelper
+   ids_get_helper.class:      IDS\ApiBundle\Model\Helpers\IdsGetHelper
+   ids_theme_helper.class:    IDS\ApiBundle\Model\Helpers\IdsThemeHelper
+   ids_themes_helper.class:   IDS\ApiBundle\Model\Helpers\IdsThemesHelper
+   ids_region_helper.class:   IDS\ApiBundle\Model\Helpers\IdsRegionHelper
+   ids_regions_helper.class:  IDS\ApiBundle\Model\Helpers\IdsRegionsHelper
+   
+   ids_api.api_key:           2a0c1b80-d9e0-47fe-ab2d-da50b98daa76
+
+services:
+   ids_default_helper:
+      class:          %ids_default_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+   
+   ids_all_helper:
+      class:          %ids_all_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+         
+   ids_get_helper:
+      class:          %ids_get_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+         
+   ids_region_helper:
+      class:          %ids_region_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+         
+   ids_regions_helper:
+      class:          %ids_regions_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+         
+   ids_theme_helper:
+      class:          %ids_theme_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+         
+   ids_themes_helper:
+      class:          %ids_themes_helper.class%
+      arguments:
+         - "@service_container"
+         - %ids_api.api_key%
+
+
+
+
+
+
+      

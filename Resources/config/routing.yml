@@ -1,0 +1,37 @@
+ids_api_homepage:
+    pattern:  /{_locale}/idsapi
+    defaults: { _controller: IDSApiBundle:Default:index, _locale: en }
+    requirements:
+       _locale: en|fr|it|de
+
+           
+ids_api_query:
+    pattern:  /{_locale}/idsapi/query
+    defaults: { _controller: IDSApiBundle:Default:query, _locale: en }
+    requirements:
+       _locale: en|fr|it|de
+    
+    
+ids_api_themes:
+    pattern:  /{_locale}/idsapi/query/{ids_action}
+    defaults: { _controller: IDSApiBundle:Theme:themes, _locale: en }
+    requirements:
+       _locale: en|fr|it|de
+    
+ids_api_theme:
+    pattern:  /{_locale}/idsapi/theme
+    defaults: { _controller: IDSApiBundle:Theme:theme, _locale: en }
+    requirements:
+       _locale: en|fr|it|de
+ 
+ids_api_regions:
+    pattern:  /{_locale}/idsapi/regions
+    defaults: { _controller: IDSApiBundle:Region:regions, _locale: en }
+    requirements:
+       _locale: en|fr|it|de
+    
+ids_api_region:
+    pattern:  /{_locale}/idsapi/region
+    defaults: { _controller: IDSApiBundle:Region:region, _locale: en }
+    requirements:
+       _locale: en|fr|it|de

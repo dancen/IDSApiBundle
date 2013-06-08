@@ -1,0 +1,49 @@
+{% extends 'IDSApiBundle::page.html.twig' %}
+
+{% block content %}
+<div>
+              
+        {% set errors = response.hasErrors() %}
+
+         {% if errors == true %}   
+    
+           {{ include('IDSApiBundle:Default:error.html.twig', {'response': response }) }}  
+    
+         {% else %}
+    
+            {% set response = response.getObject() %}    
+           
+           {{ include('IDSApiBundle:Default:paginator.html.twig', {'uri': response.uri, 'total_results': response.total_results, 'page_size': response.page_size, 'current': response.current, 'lastpage': response.getLastPage() }) }}
+         
+           
+           <div id='ids_response'>
+               
+           {% if response.results|length > 1 %}
+                <!--// IdsPaginator::paginate($uri, $this->total_results, $this->page_size, $this->current);    //-->                    
+           {% endif %} 
+                     
+           {% for object in response.results %}
+           
+             {% if response.getUri() != null %}
+                <table width='100%'><tr><td width='110'><a href='{{ response.uri }}&ids_action=get_one&ID={{ object.object_id }}' target='_blank'>ID:{{ object.object_id }}</a></td><td>
+             {% else %}
+                <table width='100%'><tr><td width='110'>ID:{{ object.object_id }} </td><td>               
+             {% endif %}
+               
+                Title: <a style='color:#070;' href='{{ object.website_url }}' target='_blank'>{{ object.title }}</a><br>
+                  
+                </td></tr></table>
+        {% endfor %}
+        
+        {% if response.results|length > 1 %}
+                <!--// IdsPaginator::paginate($uri, $this->total_results, $this->page_size, $this->current);    //-->                    
+        {% endif %}       
+                                     
+                      
+                 {{ include('IDSApiBundle:Default:paginator.html.twig', {'uri': response.uri, 'total_results': response.total_results, 'page_size': response.page_size, 'current': response.current, 'lastpage': response.getLastPage() }) }}
+            
+        </div>
+           
+    {% endif %}
+</div>      
+{% endblock %}
